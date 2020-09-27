@@ -1,0 +1,171 @@
+/* 头部开始 */
+.hander{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #d43c33;
+    padding: 0 10px;
+    width: 100%;
+    height: 84px;
+}
+.hander .title{
+    /* margin-inline: ; */
+    font-size: 24px;
+    line-height: 80px;
+    color:white;
+    letter-spacing:2px;
+}
+.hander .xz{
+    font-size: 16px;
+    line-height: 36px;
+    text-align: center;
+    width: 100px;
+    height: 36px;
+    background-color: white;
+    position: relative;
+    top:24px;
+    color:#d43c33 ;
+    border-radius:18px;
+    /* margin-top: auto; */
+    
+}
+/* 头部结束 */
+/* 导航开始 */
+.indexes ul{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    font-size: 15px;
+    line-height: 40px;
+    border-bottom:1px solid #CCCCCC;
+}
+.rad{
+    color: #d43c33;
+    border-bottom:2px solid #d43c33;
+
+}
+/* 导航结束 */
+/* 推荐开始 */
+.tj{
+    position: relative;
+    font-weight:lighter;
+    padding-left: 9px;
+    margin-bottom: 14px;
+    font-size: 17px;
+    height: 16px;
+    line-height: 15px;
+    top:20px;
+    bottom: 20px;
+    border-left:2px solid #d43c33;
+}
+.tjSongs .flex{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top:20px;
+}
+.tjSongs li{
+    width: 33%;
+    position: relative;
+}
+img{
+    width: 100%;
+    /* height: 117px; */
+}
+.tjSongs span{
+    position: absolute;
+    top:0;
+    right:0px;
+    font-size: 10px;
+    color: white;
+}
+.tjSongs p{
+    display: -webkit-box;
+    
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 6px 5px 0 5px;
+    min-height: 30px;
+    line-height: 1.2;
+    font-size: 10px;
+    height: 36px;
+    margin-bottom: 10px;
+    /* width: 117px; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/* 推荐结束 */
+/* 最新开始 */
+.newsongs ul{
+    display: flex;
+    flex-direction: column;
+}
+.newsongs ul li{
+    height: 55px;
+    padding: 13px 5px 0 9px;
+    border-bottom:0.5px solid #F6F6F7;
+
+}
+.newsongs ul li p{
+    font-weight:bolder;
+    font: 14px/1.5 "微软雅黑",sans-serif;
+}
+.newsongs .jl{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url('../index_icon_2x.png');
+    background-position: -24px 0;
+    background-size: 166px 97px;
+}
+.newsongs .sq{
+    display: inline-block;
+    width: 12px;
+    height: 8px;
+    background: url('../index_icon_2x.png');
+    margin-right: 4px;
+    background-size: 166px 97px;
+}
+.newsongs i{
+    font-size: 12px;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+}
+.fx{
+    display: flex;
+    justify-content: space-between;
+}
+/* 最新结束 */
+/* 底部开始 */
+.foot{
+    background: url('../recommand_bg_2x.png');
+    height: 190px;
+}
+.logo{
+    font-size: 38px;
+    text-align: center;
+    letter-spacing:3px;
+    padding-top:30px ;
+}
+.openapp{
+    line-height: 38px;
+    border: 1px solid #d33a31;
+    border-radius: 38px;
+    font-size: 16px;
+    color: #d33a31;
+    margin: 15px 37px 5px;
+    text-align: center;
+}
+.copyright{
+    color: #888;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    transform: scale(.75);
+}
+/* 底部结束 */

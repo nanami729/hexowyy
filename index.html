@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+    <link rel="stylesheet" href="./css/mbase.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./lib/axios.min.js"></script>
+    <script src="./lib/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="hander">
+            <h1 class="title">VTB音乐</h1>
+            <div class="xz">下载APP</div>
+        </div>
+        <div class="indexes">
+            <ul>
+                <li :class=" index === currentTab?'rad' : ''" v-for="(tab, index) in tabs" @click="switchTab(index)">{{tab}}</li>
+            </ul>
+        </div>
+        <div v-if="currentTab === 0">
+            <div>
+                <h2 class="tj">推荐歌单</h2>
+                <!--  -->
+                <div class="tjSongs">
+                    <ul class="flex">
+                        <li v-for='(item,index) in play'>
+                            <img :src='item.picUrl'>
+                            <span >{{item.playCount | tiems}}</span>
+                            <p >{{item.name}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--  -->
+                <h2 class="tj">最新音乐</h2>
+                <!--  -->
+                <div class="newsongs">
+                    <ul>
+                        <li v-for='(item,index) in musice' @click='onSelected(index)'>
+                            <div class="fx"><p>{{item.name}}</p><div class="jl"></div></div> 
+                            <p class="hui" v-if='item.song.alias'></p>
+                            <div class="sq" v-if='item.song.exclusive'></div>
+                            <i v-for='art in item.song.artists'>{{art.name}}</i>-<i v-text='item.name'></i>
+                            <audio  v-if='currentSong' :src="currentSong.url"  autoplay></audio>
+                        </li>
+                    </ul>
+                </div>
+                <!--  -->
+                <div class="foot">
+                    <div class="logo">VTB音乐</div>
+                    <div class="openapp">打开APP，发现更多好音乐 ></div>
+                    <div class="copyright">xx公司版权所有©1997-2020 HOLO科技有限公司运营</div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+                <div v-else-if="currentTab === 1">
+                    <h2 class="tj">热搜榜</h2>
+                </div>
+                <div v-else-if="currentTab === 2">
+                    <h2 class="tj">搜索</h2>
+                </div>
+    </div>
+    <!-- vue -->
+    <script>
+        // axios.defaults.baseURL = 'http://10.1.235.10:3000'
+        axios.defaults.baseURL = 'http://112.126.75.143:3000'
+        new Vue({
+            el:'#app',
+            data:{
+                play:[],
+                musice:[],
+                currentSong:[],
+                tabs: ['推荐音乐', '热搜榜', '搜索'],
+                currentTab: 0
+            },
+            methods:{
+                async lond(){
+                    let {result} = await axios.get('/personalized?limit=6').then(res=>res.data)
+                    this.play=result
+                    // console.log(this.play)
+                },
+                async loadMusice(){
+                    let {result} = await axios.get('/personalized/newsong').then(res=>res.data)
+                    this.musice=result
+                    // console.log(this.musice)  
+                 },
+                async onSelected(i){
+                    this.seleste = i
+                    let {id} = this.musice[i]
+                    let {data:[song]} = await axios.get(`/song/url?id=${id}`).then(res=>res.data)
+                    this.currentSong = song
+                    // console.log(this.song)
+                },
+                switchTab(i) {
+                    this.currentTab = i
+                    // console.log(i)
+                }
+            },
+            created(){
+                this.lond()
+                this.loadMusice()
+            
+            },
+            filters:{
+                tiems:function(count) {
+                    // console.log(count)
+                    if(count>100000000) {
+                        return parseInt(count/1000000)/100+'亿'
+                    }
+                    else if(count>10000){
+                        return parseInt(count/100)/100+'万'
+                    }
+                    else{
+                        return count
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

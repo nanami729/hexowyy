@@ -1,0 +1,60 @@
+/*base*/
+*,
+*::after,
+*::before{
+	margin: 0;
+	padding: 0;
+	/* 在有描边或者固定padding的时候，不需要精准计算宽度，只需要在设计稿测量真是宽度即可 */
+	box-sizing: border-box;
+	/* 移动端所有浏览器内置引擎都是谷歌的浏览器引擎，所以兼容性只考虑谷歌的 */
+	-webkit-box-sizing: border-box;
+	
+	/*点击高亮效果： 在移动端a链接点击的时候，会有一个高亮的效果（类似遮罩层），需要清除*/
+	-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body{
+	font-size: 14px;
+	font-family: "microsoft yahei",sans-serifs;
+	color: #333;
+}
+ul,
+ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #333;
+}
+input,
+textarea{
+	border: none;
+	outline: none;
+	resize: none;
+	/*在safari浏览器 (苹果浏览器) 会有立体的效果  元素外观：无*/
+	appearance: none;
+	-webkit-appearance: none;
+}
+img{
+	vertical-align: middle;
+}
+/*common*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix:after{
+	content: '';
+	display: block;
+	width: 0;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	clear: both;
+}
+i{
+	font-style: normal;
+}
